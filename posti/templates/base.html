@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .navbar{
+    background-color: black;
+    position:fixed;
+    display:flex;
+    align-items: center;
+    width:100%;
+    height:60px;
+    margin-top:-60px;
+    margin-left:-10px; 
+    font-weight: bold;
+    font-family: Arial;
+    box-shadow: -10px 0 20px black;
+}
+
+.userData{
+    /* background-color: aqua; */
+    flex:1;
+    display:flex;
+    height:50px;
+}
+.userData p{
+    margin-top:4px;
+    margin-left:40px;
+    color:white;
+    font-size: 35px;
+}
+
+.ButtonDiv{
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    margin-right: 40px;
+    flex:1;
+}
+
+.ButtonDiv a{
+    margin:0;
+}
+.ButtonDiv button{
+    font-size:13px;
+    padding: 0 25px;
+    height:100%;
+    background-color: black;
+    color:white;
+    border:solid black;
+}
+
+.ButtonDiv button:hover{
+    border:solid;
+    border-color: rgba(70, 70, 70, 0.568);
+    border-top: 2px;
+    border-bottom: 2px;
+    background-color: rgba(40, 40, 40, 0.274);
+}
+
+
+    </style>
+    <title>{% block title%} {% endblock %}</title>
+    {% block links %}{% endblock %}
+</head>
+<body style="margin:0;">
+
+
+    <div style="margin-top:60px;">
+    {% block content %}
+    
+    {% endblock %}
+    </div>
+
+</body>
+</html>

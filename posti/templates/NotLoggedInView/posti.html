@@ -1,0 +1,84 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'posti/styles.css' %}"> 
+<link rel="stylesheet" href="{% static 'navbar.css' %}">
+{% endblock %}
+{% block content %}
+
+{% include 'navbar.html' %}
+
+
+
+
+{% load widget_tweaks %}
+    {% load custom_filters %}
+
+
+<div class="containerPosti">
+    <div class="dataContenitore">
+        <p class="data">Disposizione creata il {{ date|date:"d/m/Y" }}</p>
+    </div>
+    <div class="cattedra">
+        <p>CATTEDRA</p>
+    </div>
+    <div class="fila">
+        {%for nome in posti %}
+        {% if forloop.counter0 < 6 %}
+        <div class="formOut 
+                        {% if forloop.counter0|modulo:6 == 1 or forloop.counter0|modulo:6 == 3 %} prima-riga 
+                        {% endif %}">
+            <div><p class="form-label">{{nome}}</p></div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="fila">
+            {%for nome in posti %}
+            {% if forloop.counter0 >= 6  and forloop.counter0 < 12%}
+            <div class="formOut 
+                            {% if forloop.counter0|modulo:6 == 1 or forloop.counter0|modulo:6 == 3 %} prima-riga 
+                            {% endif %}">
+                <div><p class="form-label">{{nome}}</p></div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="fila">
+            {%for nome in posti %}
+            {% if forloop.counter0 >= 12 and forloop.counter0 < 18 %}
+            <div class="formOut
+                            {% if forloop.counter0|modulo:6 == 1 or forloop.counter0|modulo:6 == 3 %} prima-riga 
+                            
+                            {% endif %}">
+                <div><p class="form-label"></p>{{nome}}</div>
+            </div>
+            {% endif %}
+        {% endfor %}
+</div>
+        <div class="fila" >
+            <div class="formOut"  >
+                <div><p class="form-label"></p></div>
+            </div>
+            <div class="formOut
+                            seconda-riga" >
+                <div><p class="form-label"></p></div>
+            </div>
+            {%for nome in posti %}
+            {% if forloop.counter0 >= 18 %}
+            
+            <div class="formOut
+                            {% if forloop.counter0|modulo:6 == 1 %} prima-riga 
+                            {% endif %}">
+                <div><p class="form-label"></p>{{nome}}</div>
+            </div>
+            {% endif %}
+        {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

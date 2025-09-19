@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Login page {% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'login/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form method="post">{% csrf_token %}
+			<h1>Sign in</h1>
+			<br>
+			{{form.username}}
+            {{form.password}}
+            <br>
+			<button type="submit">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>Ciao, sei un rappresentante?</h1>
+				<p>Se sei un rappresentante di classe e possiedi la password di accesso accedi per modificare i posti!</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

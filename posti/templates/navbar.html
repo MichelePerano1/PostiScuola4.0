@@ -1,0 +1,41 @@
+
+
+<nav class="navbar">
+    {% if user.is_authenticated %}
+        <div class="userData">
+            <p class="username">
+                {{user.username}}
+            </p>
+        </div>
+
+        <div class="ButtonDiv">
+            <a href="{% url 'logout' %}">
+                <button class="LogoutBtn">
+                    Logout
+                </button>
+            </a>
+            
+            <a href="{% url 'cambia_posti' %}">
+                <button class="LogoutBtn">
+                    Cambia posti
+                </button>
+            </a>
+
+            <a href="{% url 'posti' %}">
+                <button class="LogoutBtn">
+                    Home
+                </button>
+            </a>
+
+        </div>
+    {% else %}
+    <div class="ButtonDiv">
+        <a href="{% url 'login_page' %}">
+            <button class="LoginBtn">
+                Login
+            </button>
+        </a>
+    </div>
+    {% endif %}
+
+</nav>
