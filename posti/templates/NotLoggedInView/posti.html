@@ -58,25 +58,40 @@
             {% endif %}
         {% endfor %}
 </div>
-        <div class="fila" >
-            <div class="formOut"  >
-                <div><p class="form-label"></p></div>
+        <div class="fila">
+                
+                {%for field in form %}
+                {% if forloop.counter0 >= 18 and forloop.counter0 < 20 %}
+                <div class="formIn
+                                {% if results|index:forloop.counter0 == 'error' %} errorFormIn
+                                {% endif %}
+                                {% if forloop.counter0|modulo:6 == 1  %} prima-riga 
+                                {% endif %}">
+                    <div><p class="form-label">Posto {{ forloop.counter0|add:1 }}</p></div>
+                    {{ field|add_class:"formBox" }}
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="formIn">
+                    <div><p class="form-label"></p></div>
+                </div>
+                <div class="formIn prima-riga">
+                    <div><p class="form-label"></p></div>
+                </div>
+                {%for field in form %}
+                {% if forloop.counter0 >= 20 %}
+                <div class="formIn
+                                {% if results|index:forloop.counter0 == 'error' %} errorFormIn
+                                {% endif %}
+                                {% if forloop.counter0|modulo:6 == 1  %} prima-riga 
+                                {% endif %}">
+                    <div><p class="form-label">Posto {{ forloop.counter0|add:1 }}</p></div>
+                    {{ field|add_class:"formBox" }}
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
-            <div class="formOut
-                            seconda-riga" >
-                <div><p class="form-label"></p></div>
-            </div>
-            {%for nome in posti %}
-            {% if forloop.counter0 >= 18 %}
-            
-            <div class="formOut
-                            {% if forloop.counter0|modulo:6 == 1 %} prima-riga 
-                            {% endif %}">
-                <div><p class="form-label"></p>{{nome}}</div>
-            </div>
-            {% endif %}
-        {% endfor %}
-</div>
+
 
 
 
